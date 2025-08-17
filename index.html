@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind & Wave - Cabinet de Conseil en Ressources Humaines</title>
+    <meta name="description" content="Mind & Wave, votre partenaire de confiance en ressources humaines. Gestion, Management, Commerce, Conseil Jeune et bien plus.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- Navigation Bar - Style SiteW -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <div class="logo-text">Mind & Wave</div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <button class="nav-btn" onclick="scrollToSection('hero')">
+                        <i class="fas fa-home"></i>
+                        <span>Accueil</span>
+                    </button>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="nav-btn dropdown-toggle" onclick="toggleDropdown(this)">
+                        <i class="fas fa-cogs"></i>
+                        <span>Services</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-btn" onclick="scrollToSection('services')">Nos Services</button></li>
+                        <li><button class="dropdown-btn" onclick="showServiceInfo('gestion')">Gestion & Management</button></li>
+                        <li><button class="dropdown-btn" onclick="showServiceInfo('commerce')">Commerce & Relation Client</button></li>
+                        <li><button class="dropdown-btn" onclick="showServiceInfo('conseil')">Conseil Jeune</button></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-btn" onclick="scrollToSection('about')">
+                        <i class="fas fa-users"></i>
+                        <span>À Propos</span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-btn" onclick="scrollToSection('contact')">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </button>
+                </li>
+            </ul>
+            
+            <!-- Search and Action Buttons -->
+            <div class="nav-actions">
+                <button class="search-icon-btn" onclick="performSearch()" title="Rechercher">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="action-btn btn-contact" onclick="openContactModal()">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+                <button class="action-btn btn-rdv" onclick="openRdvModal()">
+                    <i class="fas fa-calendar"></i>
+                    <span>RDV</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Style SiteW -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Votre Partenaire <span class="highlight">RH</span> de Confiance</h1>
+                <p>Accompagnement personnalisé en ressources humaines pour optimiser votre capital humain et développer votre entreprise avec des solutions innovantes et sur mesure.</p>
+                
+                <div class="hero-stats">
+                    <div class="expertise-zone">
+                        <h4 class="zone-title">Gestion et Management</h4>
+                        <div class="zone-content">
+                            <p>QVCT</p>
+                            <p>Être Manager</p>
+                            <p>Législation Sociale</p>
+                            <p>Compte d'exploitation</p>
+                        </div>
+                    </div>
+                    <div class="expertise-zone">
+                        <h4 class="zone-title">Commerce et relation client</h4>
+                        <div class="zone-content">
+                            <p>Communication</p>
+                            <p>Négociation</p>
+                            <p>Marketing</p>
+                            <p>Gestion de projet</p>
+                        </div>
+                    </div>
+                    <div class="expertise-zone">
+                        <h4 class="zone-title">Conseil Jeune</h4>
+                        <div class="zone-content">
+                            <p>Finance</p>
+                            <p>Fiscalité</p>
+                            <p>Immobilier</p>
+                            <p>Orientation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('services')">
+                        <i class="fas fa-arrow-right"></i> Découvrir nos services
+                    </button>
+                    <button class="btn btn-secondary" onclick="openRdvModal()">
+                        <i class="fas fa-calendar-plus"></i> Consultation gratuite
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <!-- Replaced text placeholder with interactive Mind & Wave logo -->
+                <div class="hero-logo-container">
+                    <img src="mind-wave-logo.png" alt="Mind & Wave Logo" class="hero-logo" />
+                    <div class="logo-overlay">
+                        <h3>Mind & Wave</h3>
+                        <p>Excellence • Innovation • Performance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Services</h2>
+                <p>Des solutions complètes pour tous vos besoins en ressources humaines</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" onclick="showServiceInfo('gestion')">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Gestion et Management</h3>
+                    <p>QVCT, formation managériale, législation sociale et optimisation des comptes d'exploitation.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Qualité de Vie et Conditions de Travail</li>
+                        <li><i class="fas fa-check"></i> Formation "Être Manager"</li>
+                        <li><i class="fas fa-check"></i> Législation Sociale</li>
+                        <li><i class="fas fa-check"></i> Analyse des comptes</li>
+                    </ul>
+                    <button class="service-btn">En savoir plus</button>
+                </div>
+
+                <div class="service-card" onclick="showServiceInfo('commerce')">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Commerce et Relation Client</h3>
+                    <p>Communication, négociation, marketing et gestion de projet pour développer votre activité.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Techniques de Communication</li>
+                        <li><i class="fas fa-check"></i> Négociation Commerciale</li>
+                        <li><i class="fas fa-check"></i> Stratégies Marketing</li>
+                        <li><i class="fas fa-check"></i> Gestion de Projet</li>
+                    </ul>
+                    <button class="service-btn">En savoir plus</button>
+                </div>
+
+                <div class="service-card" onclick="showServiceInfo('conseil')">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Conseil Jeune</h3>
+                    <p>Accompagnement spécialisé en finance, fiscalité, immobilier et orientation professionnelle.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Conseil en Finance</li>
+                        <li><i class="fas fa-check"></i> Optimisation Fiscale</li>
+                        <li><i class="fas fa-check"></i> Investissement Immobilier</li>
+                        <li><i class="fas fa-check"></i> Orientation Professionnelle</li>
+                    </ul>
+                    <button class="service-btn">En savoir plus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-header">
+                        <h2>À Propos de Mind & Wave</h2>
+                        <p>Votre partenaire de confiance depuis plus de 15 ans</p>
+                    </div>
+                    
+                    <div class="about-description">
+                        <p>Mind & Wave est un cabinet de conseil spécialisé dans l'accompagnement des entreprises et des particuliers. Notre expertise couvre trois domaines clés : la gestion et le management, le commerce et la relation client, ainsi que le conseil aux jeunes professionnels.</p>
+                        
+                        <p>Forte d'une équipe d'experts passionnés, nous mettons notre savoir-faire au service de votre réussite. Notre approche personnalisée nous permet de proposer des solutions sur mesure, adaptées à vos enjeux spécifiques.</p>
+                    </div>
+
+                    <div class="about-values">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-target"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Excellence</h4>
+                                <p>Nous visons l'excellence dans chacune de nos interventions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Innovation</h4>
+                                <p>Nous adoptons les meilleures pratiques et outils modernes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Proximité</h4>
+                                <p>Un accompagnement personnalisé et une relation de confiance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="about-placeholder">
+                        <i class="fas fa-building"></i>
+                        <h3>Mind & Wave</h3>
+                        <p>Cabinet de Conseil RH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Clients accompagnés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Années d'expérience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Taux de satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support disponible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Témoignages Clients</h2>
+                <p>Ce que nos clients disent de nous</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Mind & Wave nous a accompagnés dans la restructuration de notre équipe. Leur expertise en gestion et management a été déterminante pour notre réussite."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Marie Dubois</h4>
+                            <p>Directrice RH, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Excellent accompagnement en négociation commerciale. Nos équipes ont gagné en efficacité et nos résultats ont considérablement progressé."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Pierre Martin</h4>
+                            <p>Directeur Commercial, SalesPlus</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Grâce aux conseils de Mind & Wave, j'ai pu optimiser mes investissements et définir une stratégie financière claire pour mon avenir."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Julie Leroy</h4>
+                            <p>Jeune Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contactez-nous</h2>
+                <p>Prêt à transformer votre entreprise ? Parlons de votre projet</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>123 Avenue des Champs-Élysées<br>75008 Paris, France</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>contact@mindwave.fr</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Horaires</h4>
+                            <p>Lun-Ven: 9h-18h<br>Sam: 9h-12h sur RDV</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" id="mainContactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Prénom *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nom *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="gestion">Gestion et Management</option>
+                                <option value="commerce">Commerce et Relation Client</option>
+                                <option value="conseil">Conseil Jeune</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre projet ou vos besoins..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-text">Mind & Wave</div>
+                    </div>
+                    <p>Votre partenaire de confiance pour tous vos besoins en ressources humaines. Excellence, innovation et résultats depuis plus de 15 ans au service de votre développement.</p>
+                    <div class="social-links">
+                        <a onclick="showInfo('linkedin')" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a onclick="showInfo('twitter')" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a onclick="showInfo('facebook')" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a onclick="showInfo('youtube')" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a onclick="showInfo('instagram')" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Nos Services</h4>
+                    <ul>
+                        <li><a onclick="showServiceInfo('gestion')">Gestion et Management</a></li>
+                        <li><a onclick="showServiceInfo('commerce')">Commerce et Relation Client</a></li>
+                        <li><a onclick="showServiceInfo('conseil')">Conseil Jeune</a></li>
+                        <li><a onclick="scrollToSection('services')">Tous nos services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Entreprise</h4>
+                    <ul>
+                        <li><a onclick="scrollToSection('about')">À propos de nous</a></li>
+                        <li><a onclick="scrollToSection('testimonials')">Témoignages</a></li>
+                        <li><a onclick="showInfo('actualites')">Actualités & Blog</a></li>
+                        <li><a onclick="showInfo('carrieres')">Rejoignez-nous</a></li>
+                        <li><a onclick="showInfo('partenaires')">Nos partenaires</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact & Infos</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Siège Social</strong>
+                                <p>123 Avenue des Champs-Élysées<br>75008 Paris, France</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Téléphone</strong>
+                                <p>+33 1 23 45 67 89</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>contact@mindwave.fr</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h5>Newsletter</h5>
+                        <p>Recevez nos actualités</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Votre email" id="newsletterEmail">
+                            <button onclick="subscribeNewsletter()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Mind & Wave. Tous droits réservés.</p>
+                    <div class="footer-links">
+                        <a onclick="showInfo('mentions')">Mentions légales</a>
+                        <a onclick="showInfo('confidentialite')">Politique de confidentialité</a>
+                        <a onclick="showInfo('cookies')">Gestion des cookies</a>
+                        <a onclick="showInfo('cgv')">Conditions générales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-envelope"></i> Contactez-nous</h2>
+                <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais.</p>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Nom complet *</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email *</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message *</label>
+                        <textarea id="contactMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="rdvModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-calendar"></i> Prendre Rendez-vous</h2>
+                <span class="close" onclick="closeModal('rdvModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Planifiez votre consultation gratuite avec nos experts.</p>
+                <form id="rdvForm">
+                    <div class="form-group">
+                        <label for="rdvName">Nom complet *</label>
+                        <input type="text" id="rdvName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rdvEmail">Email *</label>
+                        <input type="email" id="rdvEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rdvDate">Date souhaitée *</label>
+                        <input type="date" id="rdvDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rdvService">Service concerné</label>
+                        <select id="rdvService">
+                            <option value="">Choisissez un service</option>
+                            <option value="gestion">Gestion et Management</option>
+                            <option value="commerce">Commerce et Relation Client</option>
+                            <option value="conseil">Conseil Jeune</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Confirmer le RDV</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Chargement en cours...</p>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Typing animation script
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroText = document.querySelector('.hero-text h1');
+            const text = "Votre Partenaire RH de Confiance";
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    heroText.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100);
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>
